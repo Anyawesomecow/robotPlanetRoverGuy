@@ -43,7 +43,7 @@ mesh = SubResource("CapsuleMesh_vxwsw")
 [node name="head one" parent="CharacterBody3D" instance=ExtResource("1_gfoto")]
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/head one"]
-transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.999926, 0, 1.00576, 0.813719)
+transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.999926, 0, 1.00576, 1.21244)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.296008, 0, 0.955185, 0, 1, 0, -0.955185, 0, -0.296008, 3.83887, 3.56343, -2.61849)
