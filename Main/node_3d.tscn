@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv3lmju3tfivj"]
+[gd_scene load_steps=8 format=3 uid="uid://dv3lmju3tfivj"]
 
 [ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://modles/head one.glb" id="1_gfoto"]
+[ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13i33"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,6 +32,7 @@ size = Vector3(27.9603, 0.280273, 37.0181)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2189, 0)
+script = ExtResource("1_yopsi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_k2re6")
