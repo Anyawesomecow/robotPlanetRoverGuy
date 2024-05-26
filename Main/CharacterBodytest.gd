@@ -1,7 +1,7 @@
 extends CharacterBody3D
 var legtype
 const sensetivity = .01
-const SPEED = 8.0
+const SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 @onready var Head1 = $"head one"
 @onready var Camra = $"head one/Camera3D"
@@ -71,15 +71,15 @@ func _physics_process(delta):
 	var direction = (body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
 		if direction:
-			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 10)
-			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 10)
+			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 20)
+			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 20)
 		else:
 		
-			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 7)
-			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 7)
+			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 10)
+			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 10)
 			print(velocity.z)
 			print(velocity.x)
 	else:
-		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 2)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 2)
+		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 5)
+		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 5)
 
