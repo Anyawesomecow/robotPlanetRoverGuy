@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv3lmju3tfivj"]
+[gd_scene load_steps=10 format=3 uid="uid://dv3lmju3tfivj"]
 
 [ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://modles/head one.glb" id="1_gfoto"]
 [ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
@@ -18,9 +18,19 @@ glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2re6"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_msfml"]
+radius = 1.94642
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vxwsw"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46qvt"]
+albedo_color = Color(0.271877, 0.790659, 0.570297, 1)
+
 [node name="world test" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o6ynt")
@@ -37,13 +47,21 @@ script = ExtResource("1_yopsi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_k2re6")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.312726, 1.82067, -0.265823)
+shape = SubResource("SphereShape3D_msfml")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_vxwsw")
 
 [node name="head one" parent="CharacterBody3D" instance=ExtResource("1_gfoto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.610332, -0.438172)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/head one"]
-transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.999926, 0, 1.00576, 1.21244)
+transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.999926, 0, 1.00576, 0.999433)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.296008, 0, 0.955185, 0, 1, 0, -0.955185, 0, -0.296008, 3.83887, 3.56343, -2.61849)
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61846, 4.73955, -15.3225)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(9.11047, 7.78528, 1)
