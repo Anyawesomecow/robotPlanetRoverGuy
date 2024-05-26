@@ -36,9 +36,9 @@ shadow_enabled = true
 environment = SubResource("Environment_o6ynt")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16368, 0.0200195, -7.85359)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5772, 0.0200195, -36.824)
 use_collision = true
-size = Vector3(27.9603, 0.280273, 37.0181)
+size = Vector3(136.501, 0.280273, 124.489)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2189, 0)
@@ -68,6 +68,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61846, 4.73955, -15.3225)
 material_override = SubResource("StandardMaterial3D_46qvt")
 use_collision = true
 size = Vector3(9.11047, 7.78528, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7742, 3.70784, -8.01739)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 9.84869, 15.6102)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0842, -6.27048, 2.44007)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 2.70755, 15.6102)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7742, 1.86579, -8.01739)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 6.16458, 15.6102)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D2/CSGBox3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7742, 2.7818, -8.01739)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 7.99661, 15.6102)
 
 [node name="legabilitytimer" type="Timer" parent="."]
 one_shot = true
