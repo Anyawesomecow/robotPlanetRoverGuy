@@ -60,8 +60,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.610332, -0.438172)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/head one"]
 transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.999926, 0, 1.00576, 0.999433)
 
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CharacterBody3D/head one/Camera3D"]
+update_mode = 1
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61846, 4.73955, -15.3225)
 material_override = SubResource("StandardMaterial3D_46qvt")
 use_collision = true
 size = Vector3(9.11047, 7.78528, 1)
+
+[node name="legabilitytimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="legabilitytimer" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]
