@@ -94,6 +94,7 @@ use_collision = true
 size = Vector3(15.4219, 7.99661, 15.6102)
 
 [node name="legabilitytimer" type="Timer" parent="."]
+wait_time = 0.065
 one_shot = true
 
 [connection signal="timeout" from="legabilitytimer" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]
