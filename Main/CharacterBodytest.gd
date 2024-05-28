@@ -77,6 +77,22 @@ func _physics_process(delta):
 			velocity.z = direction2.z * legspeed * 20
 		if Input.is_action_pressed("abilitylegs") and is_on_floor():
 			print("placeholderslide")
+		if Input.is_action_just_pressed("abilitylegs2"):
+			$"../legabilitytimer_one2".start()
+		if Input.is_action_just_released("ui_accept"):
+			if $"../legabilitytimer_one2".time_left >= 1:
+				var timelefttimep = $"../legabilitytimer_one2".time_left
+				$"../legabilitytimer_one2".stop()
+				if is_on_floor():
+					velocity.y = JUMP_VELOCITY * 6 * (2 - timelefttimep)
+					$"../legabilitytimer_one2".stop()
+		if Input.is_action_just_released("abilitylegs2"):
+			if $"../legabilitytimer_one2".time_left >= 0.1:
+				if is_on_floor():
+					print($"../legabilitytimer_one2".time_left)
+					velocity.y = JUMP_VELOCITY * 4 * (2 - $"../legabilitytimer_one2".time_left)
+				else:
+					velocity.y = JUMP_VELOCITY * 1.5 * (2 - $"../legabilitytimer_one2".time_left)
 			
 			
 	if legtype == legset.roller:# roller abilitys
@@ -100,24 +116,12 @@ func _physics_process(delta):
 			velocity.y = -velocityybefore/2
 		if Input.is_action_just_pressed("abilitylegs2"):
 			$"../legabilitytimer_one2".start()
-		if Input.is_action_just_released("ui_accept"):
-			if $"../legabilitytimer_one2".time_left >= 1:
-				if is_on_floor():
-					velocity.y = JUMP_VELOCITY * 6 * (2 - $"../legabilitytimer_one2".time_left)
-					$"../legabilitytimer_one2".stop()
 		if Input.is_action_just_released("abilitylegs2"):
-			if $"../legabilitytimer_one2".time_left >= 0.1:
-				if is_on_floor():
-					print($"../legabilitytimer_one2".time_left)
-					velocity.y = JUMP_VELOCITY * 4 * (2 - $"../legabilitytimer_one2".time_left)
-				else:
-					velocity.y = JUMP_VELOCITY * 1.5 * (2 - $"../legabilitytimer_one2".time_left)
-		if Input.is_action_just_released("abilitylegs") and is_on_floor():
 			if $"../legabilitytimer_one2".time_left >= 0.1:
 				print($"../legabilitytimer_one2".time_left)
 				$"../legabilitytimer_one2".stop()
 				print("boom")
-				if !Input.is_action_pressed("abilitylegs2"):
+				if !Input.is_action_pressed("abilitylegs"):
 					print("Kaboom")
 			
 	if legtype == legset.treds:# tred abiliteis
