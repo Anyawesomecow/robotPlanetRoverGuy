@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cttq1pdb0oa7t"]
+
+[ext_resource type="Script" path="res://UIs/ui_pausemenue.gd" id="1_gs5t3"]
+
+[node name="in_game_menue" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gs5t3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Main_menue" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menue"
