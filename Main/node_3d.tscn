@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv3lmju3tfivj"]
+[gd_scene load_steps=14 format=3 uid="uid://dv3lmju3tfivj"]
 
 [ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://modles/head one.glb" id="1_gfoto"]
 [ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
@@ -23,8 +23,26 @@ radius = 1.94642
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vxwsw"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l4go"]
+albedo_color = Color(1, 0.2, 1, 1)
+metallic = 0.3
+roughness = 0.08
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46qvt"]
 albedo_color = Color(0.271877, 0.790659, 0.570297, 1)
+metallic = 0.45
+
+[sub_resource type="PrismMesh" id="PrismMesh_hm26r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2g4x"]
+albedo_color = Color(1, 1, 0.247059, 1)
+metallic = 0.3
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcwxn"]
+albedo_color = Color(0.168627, 1, 1, 1)
+metallic = 1.0
+roughness = 0.69
 
 [node name="world test" type="Node3D"]
 
@@ -63,35 +81,42 @@ transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.9999
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CharacterBody3D/head one/Camera3D"]
 update_mode = 1
 
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8913, 1.51281, -37.9787)
+material_override = SubResource("StandardMaterial3D_5l4go")
+material_overlay = SubResource("StandardMaterial3D_5l4go")
+use_collision = true
+size = Vector3(15.4219, 7.99661, 15.6102)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85686, 6.8245, -36.9346)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 7.99661, 15.6102)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91734, 4.0427, -28.9172)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 6.16458, 15.6102)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6915, 2.17691, -20.8998)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 2.70755, 15.6102)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3927, 8.44739, -23.3399)
+material_override = SubResource("StandardMaterial3D_46qvt")
+use_collision = true
+size = Vector3(15.4219, 9.84869, 15.6102)
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61846, 4.73955, -15.3225)
 material_override = SubResource("StandardMaterial3D_46qvt")
 use_collision = true
 size = Vector3(9.11047, 7.78528, 1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7742, 3.70784, -8.01739)
-material_override = SubResource("StandardMaterial3D_46qvt")
-use_collision = true
-size = Vector3(15.4219, 9.84869, 15.6102)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0842, -6.27048, 2.44007)
-material_override = SubResource("StandardMaterial3D_46qvt")
-use_collision = true
-size = Vector3(15.4219, 2.70755, 15.6102)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D2/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7742, 1.86579, -8.01739)
-material_override = SubResource("StandardMaterial3D_46qvt")
-use_collision = true
-size = Vector3(15.4219, 6.16458, 15.6102)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D2/CSGBox3D2/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7742, 2.7818, -8.01739)
-material_override = SubResource("StandardMaterial3D_46qvt")
-use_collision = true
-size = Vector3(15.4219, 7.99661, 15.6102)
 
 [node name="legabilitytimer_one" type="Timer" parent="."]
 wait_time = 0.065
@@ -106,7 +131,24 @@ wait_time = 2.0
 one_shot = true
 
 [node name="last_tuched_floor" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(5.52591, -17.6193, 0, 6.28913, 15.4811, 0, 0, 0, 5.45922, -21.4927, 0, 0)
+use_collision = true
+mesh = SubResource("PrismMesh_hm26r")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(7.44978, -10.7009, 0, 3.81963, 20.8709, 0, 0, 0, 5.45922, -21.4927, 0, 5.37903)
+use_collision = true
+mesh = SubResource("PrismMesh_hm26r")
+material = SubResource("StandardMaterial3D_u2g4x")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(3.76831, -20.944, 0, 7.47587, 10.5571, 0, 0, 0, 5.45922, -21.4927, 0, 10.61)
+use_collision = true
+mesh = SubResource("PrismMesh_hm26r")
+material = SubResource("StandardMaterial3D_tcwxn")
 
 [connection signal="timeout" from="legabilitytimer_one" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]

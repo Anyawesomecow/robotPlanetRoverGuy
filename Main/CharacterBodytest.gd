@@ -23,9 +23,6 @@ func bodypartphys():
 	if legtype == legset.treds:
 		legspeed = SPEED * 0.5
 		print(legspeed)
-func add(num1, num2):
-	var result = num1 + num2
-	return result
 
 func _input(event):
 	if event.is_action_pressed("esc"):
@@ -92,22 +89,22 @@ func _physics_process(delta):
 			if velocity.y >= 0:
 				velocity.y = 0
 			velocity.y -= 20
+		if Input.is_action_just_pressed("abilitylegs") and is_on_floor():
 			$"../legabilitytimer_one3".start()
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			if $"../legabilitytimer_one3".time_left >= 1.8:
+				print("floomp")
 		if Input.is_action_just_pressed("ui_accept") and $"../last_tuched_floor".time_left >= 0.1 and is_on_floor():
 			print("stinky")
 			print($"../last_tuched_floor".time_left)
 			velocity.y = -velocityybefore/2
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			
-			if $"../legabilitytimer_one3".time_left >= 1.8:
-				print("floomp")
 		if Input.is_action_just_pressed("abilitylegs2"):
 			$"../legabilitytimer_one2".start()
 		if Input.is_action_just_released("ui_accept"):
-			if $"../legabilitytimer_one2".time_left >= 0.6:
-				print($"../legabilitytimer_one2".time_left)
-				velocity.y = JUMP_VELOCITY * 6 * (2 - $"../legabilitytimer_one2".time_left)
-				$"../legabilitytimer_one2".stop()
+			if $"../legabilitytimer_one2".time_left >= 1:
+				if is_on_floor():
+					velocity.y = JUMP_VELOCITY * 6 * (2 - $"../legabilitytimer_one2".time_left)
+					$"../legabilitytimer_one2".stop()
 		if Input.is_action_just_released("abilitylegs2"):
 			if $"../legabilitytimer_one2".time_left >= 0.1:
 				if is_on_floor():
