@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://player/heads/head one.glb" id="1_gfoto"]
 [ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
 [ext_resource type="Script" path="res://player/legsa/Movement_treads.gd" id="3_g5jwa"]
-[ext_resource type="Script" path="res://UIs/Pause_menu.gd" id="5_1jq4f"]
+[ext_resource type="Script" path="res://UIs/menues/Pause_menu.gd" id="5_1jq4f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13i33"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -175,36 +175,40 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_1jq4f")
 
-[node name="MarginContainer" type="MarginContainer" parent="Pause_menu"]
+[node name="PanelContainer" type="PanelContainer" parent="Pause_menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -52.5
-offset_top = -50.5
-offset_right = 52.5
-offset_bottom = 50.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pause_menu/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Pause_menu/PanelContainer"]
 layout_mode = 2
 
-[node name="play" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause_menu/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="play" type="Button" parent="Pause_menu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="options" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
+[node name="options" type="Button" parent="Pause_menu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="main_menue" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
+[node name="main_menue" type="Button" parent="Pause_menu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menue"
 
 [connection signal="timeout" from="legabilitytimer_one" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]
-[connection signal="pressed" from="Pause_menu/MarginContainer/VBoxContainer/play" to="Pause_menu" method="_on_play_pressed"]
-[connection signal="pressed" from="Pause_menu/MarginContainer/VBoxContainer/options" to="Pause_menu" method="_on_options_pressed"]
-[connection signal="pressed" from="Pause_menu/MarginContainer/VBoxContainer/main_menue" to="Pause_menu" method="_on_main_menue_pressed"]
+[connection signal="pressed" from="Pause_menu/PanelContainer/MarginContainer/VBoxContainer/play" to="Pause_menu" method="_on_play_pressed"]
+[connection signal="pressed" from="Pause_menu/PanelContainer/MarginContainer/VBoxContainer/options" to="Pause_menu" method="_on_options_pressed"]
+[connection signal="pressed" from="Pause_menu/PanelContainer/MarginContainer/VBoxContainer/main_menue" to="Pause_menu" method="_on_main_menue_pressed"]
