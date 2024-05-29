@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdxf6e8qo0eyq"
-path.s3tc="res://.godot/imported/head one_texturehead 1_n.png-5896ebfc3f49450fadacd91e0d28fe8b.s3tc.ctex"
+uid="uid://30pvkyumvo46"
+path.s3tc="res://.godot/imported/head one_texturehead 1_n.png-4bcec69248b212bfaa17c136f213b0dc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://modles/head one_texturehead 1_n.png"
-dest_files=["res://.godot/imported/head one_texturehead 1_n.png-5896ebfc3f49450fadacd91e0d28fe8b.s3tc.ctex"]
+source_file="res://player/heads/head one_texturehead 1_n.png"
+dest_files=["res://.godot/imported/head one_texturehead 1_n.png-4bcec69248b212bfaa17c136f213b0dc.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://modles/head one_texturehead 1_n.png"
+roughness/src_normal="res://player/heads/head one_texturehead 1_n.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

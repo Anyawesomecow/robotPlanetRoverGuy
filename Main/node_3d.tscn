@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dv3lmju3tfivj"]
+[gd_scene load_steps=15 format=3 uid="uid://dv3lmju3tfivj"]
 
-[ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://modles/head one.glb" id="1_gfoto"]
+[ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://player/heads/head one.glb" id="1_gfoto"]
 [ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
+[ext_resource type="Script" path="res://player/legsa/Movement_treads.gd" id="3_g5jwa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13i33"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -80,6 +81,9 @@ transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.9999
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CharacterBody3D/head one/Camera3D"]
 update_mode = 1
+
+[node name="Movement_treads" type="Node3D" parent="CharacterBody3D"]
+script = ExtResource("3_g5jwa")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8913, 1.51281, -37.9787)
