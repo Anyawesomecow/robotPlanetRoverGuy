@@ -89,6 +89,10 @@ update_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.726653, 0.00309908)
 script = ExtResource("3_g5jwa")
 
+[node name="sphear_legs" type="Node3D" parent="CharacterBody3D"]
+
+[node name="leg_legs" type="Node3D" parent="CharacterBody3D"]
+
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8913, 1.51281, -37.9787)
 material_override = SubResource("StandardMaterial3D_5l4go")
