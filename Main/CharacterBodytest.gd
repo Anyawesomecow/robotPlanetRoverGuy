@@ -44,6 +44,7 @@ func _input(event):
 		bodypartphys()
 
 func _ready():# makes mouse captured
+	$"../Pause_menu".Play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	bodypartphys()
 func _unhandled_input(event):# moves camara

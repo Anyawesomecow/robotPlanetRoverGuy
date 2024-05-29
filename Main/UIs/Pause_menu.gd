@@ -3,14 +3,12 @@ extends Control
 var Is_Paused = true
 
 func pause():
-	print("gorp")
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	show()
 	Is_Paused = true
 	
 func Play():
-	print("goim")
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hide()
@@ -33,4 +31,5 @@ func _on_options_pressed():
 
 
 func _on_main_menue_pressed():
-	get_tree().change_scene_to_file("res://UIs/menues/main menue.gd")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://UIs/menues/main menue.tscn")
