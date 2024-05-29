@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv3lmju3tfivj"]
+[gd_scene load_steps=17 format=3 uid="uid://dv3lmju3tfivj"]
 
+[ext_resource type="Script" path="res://node_3d.gd" id="1_bvjba"]
 [ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://player/heads/head one.glb" id="1_gfoto"]
 [ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
 [ext_resource type="Script" path="res://player/legsa/Movement_treads.gd" id="3_g5jwa"]
+[ext_resource type="PackedScene" uid="uid://cttq1pdb0oa7t" path="res://UIs/ui_pausemenue.tscn" id="5_alb1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13i33"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -46,6 +48,7 @@ metallic = 1.0
 roughness = 0.69
 
 [node name="world test" type="Node3D"]
+script = ExtResource("1_bvjba")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -83,6 +86,7 @@ transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.9999
 update_mode = 1
 
 [node name="Movement_treads" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.726653, 0.00309908)
 script = ExtResource("3_g5jwa")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
@@ -154,5 +158,7 @@ transform = Transform3D(3.76831, -20.944, 0, 7.47587, 10.5571, 0, 0, 0, 5.45922,
 use_collision = true
 mesh = SubResource("PrismMesh_hm26r")
 material = SubResource("StandardMaterial3D_tcwxn")
+
+[node name="in_game_menue" parent="." instance=ExtResource("5_alb1s")]
 
 [connection signal="timeout" from="legabilitytimer_one" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]

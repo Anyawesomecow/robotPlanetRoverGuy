@@ -1,8 +1,11 @@
 extends Control
 
-func Pause():
+func open():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	show()
 	get_tree().Paused = true
-	$".".show()
+
+
 func UnPause():
 	$".".hide()
 	get_tree().Paused = false

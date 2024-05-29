@@ -27,8 +27,6 @@ func bodypartphys():
 		print(legspeed)
 
 func _input(event):
-	if event.is_action_pressed("esc"):#quits game
-		get_tree().quit()
 	if event.is_action_pressed("switchLegs1"):# temp leg swap
 		if temphold == 3:
 			print("roller")
