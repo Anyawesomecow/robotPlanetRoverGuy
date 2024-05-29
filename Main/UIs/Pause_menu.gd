@@ -1,6 +1,6 @@
 extends Control
 
-var Is_Paused = false
+var Is_Paused = true
 
 func pause():
 	print("gorp")
@@ -22,3 +22,15 @@ func _input(event):
 			pause()
 		else:
 			Play()
+
+
+func _on_play_pressed():
+	Play()
+
+
+func _on_options_pressed():
+	pass # Replace with function body.
+
+
+func _on_main_menue_pressed():
+	get_tree().change_scene_to_file("res://UIs/menues/main menue.gd")

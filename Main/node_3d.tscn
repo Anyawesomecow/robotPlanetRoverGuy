@@ -162,26 +162,49 @@ material = SubResource("StandardMaterial3D_tcwxn")
 [node name="Pause_menu" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_1jq4f")
 
 [node name="MarginContainer" type="MarginContainer" parent="Pause_menu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -50.5
+offset_right = 52.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Pause_menu/MarginContainer"]
 layout_mode = 2
 
 [node name="play" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Play"
 
 [node name="options" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Options"
 
 [node name="main_menue" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Main Menue"
 
 [connection signal="timeout" from="legabilitytimer_one" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]
+[connection signal="pressed" from="Pause_menu/MarginContainer/VBoxContainer/play" to="Pause_menu" method="_on_play_pressed"]
+[connection signal="pressed" from="Pause_menu/MarginContainer/VBoxContainer/options" to="Pause_menu" method="_on_options_pressed"]
+[connection signal="pressed" from="Pause_menu/MarginContainer/VBoxContainer/main_menue" to="Pause_menu" method="_on_main_menue_pressed"]
