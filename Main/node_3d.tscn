@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://player/heads/head one.glb" id="1_gfoto"]
 [ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
 [ext_resource type="Script" path="res://player/legsa/Movement_treads.gd" id="3_g5jwa"]
-[ext_resource type="PackedScene" uid="uid://cttq1pdb0oa7t" path="res://UIs/ui_pausemenue.tscn" id="5_alb1s"]
+[ext_resource type="Script" path="res://UIs/Pause_menu.gd" id="5_1jq4f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13i33"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -159,6 +159,29 @@ use_collision = true
 mesh = SubResource("PrismMesh_hm26r")
 material = SubResource("StandardMaterial3D_tcwxn")
 
-[node name="in_game_menue" parent="." instance=ExtResource("5_alb1s")]
+[node name="Pause_menu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_1jq4f")
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause_menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause_menu/MarginContainer"]
+layout_mode = 2
+
+[node name="play" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="options" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="main_menue" type="Button" parent="Pause_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [connection signal="timeout" from="legabilitytimer_one" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]
