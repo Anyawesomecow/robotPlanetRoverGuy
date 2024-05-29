@@ -1,4 +1,5 @@
 extends CharacterBody3D
+#variables
 var floortemp = true
 var velocityybefore = -20
 var legtype = legset.treds
@@ -13,6 +14,7 @@ const JUMP_VELOCITY = 4.5
 var gravity = 12
 enum legset {legs, roller, treds,}
 var temphold = 2
+#notates jump size and speed for difrent legs
 func bodypartphys():
 	if legtype == legset.legs:
 		legspeed = SPEED * 1.5
@@ -25,7 +27,7 @@ func bodypartphys():
 		print(legspeed)
 
 func _input(event):
-	if event.is_action_pressed("esc"):
+	if event.is_action_pressed("esc"):#quits game
 		get_tree().quit()
 	if event.is_action_pressed("switchLegs1"):# temp leg swap
 		if temphold == 3:
@@ -43,16 +45,16 @@ func _input(event):
 		print(temphold)
 		bodypartphys()
 
-func _ready():
+func _ready():# makes mouse captured
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	bodypartphys()
-func _unhandled_input(event):
+func _unhandled_input(event):# moves camara
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		body.rotate_y(-event.relative.x * sensetivity)
 		Head1.rotate_x(event.relative.y * sensetivity)
 
 func _physics_process(delta):
-	if !is_on_floor():
+	if !is_on_floor():# captures latest velocity before hitting the ground
 		velocityybefore = velocity.y
 	move_and_slide()
 	# Add the gravity.
@@ -64,9 +66,9 @@ func _physics_process(delta):
 		velocity.y = legjump * 1.8
 		velocity.x = 0
 		velocity.z = 0
+		
 	if Input.is_action_just_pressed("abilitylegs") and is_on_floor():
 		$"../legabilitytimer_one".start()
-		
 		
 	if legtype == legset.legs:# leg abilitys
 		if $"../legabilitytimer_one".time_left != 0 and Input.is_action_just_pressed("ui_accept") and is_on_floor():
