@@ -1,8 +1,7 @@
 extends CharacterBody3D
-#variables
+
 var floortemp = true
 var velocityybefore = -20
-var legtype = legset.treds
 const sensetivity = .01
 const SPEED = 9.0
 var legspeed = 9
@@ -11,42 +10,19 @@ const JUMP_VELOCITY = 4.5
 @onready var Head1 = $"head one"
 @onready var Camra = $"head one/Camera3D"
 @onready var body = $"."
-var gravity = 12
-enum legset {legs, roller, treds,}
-var temphold = 2
-#notates jump size and speed for difrent legs
-func bodypartphys():
-	if legtype == legset.legs:
-		legspeed = SPEED * 1.5
-		legjump = JUMP_VELOCITY * 1.3
-	if legtype == legset.roller:
-		legspeed = SPEED
-		legjump = JUMP_VELOCITY * 0.7
-	if legtype == legset.treds:
-		legspeed = SPEED * 0.5
-		print(legspeed)
+@onready var legsets = [$tread_legs, $sphear_legs, $leg_legs]
+var legnum = 0
 
 func _input(event):
-	if event.is_action_pressed("switchLegs1"):# temp leg swap
-		if temphold == 3:
-			print("roller")
-			legtype = legset.roller
-		if temphold == 2:
-			print("legs")
-			legtype = legset.legs
-		if temphold == 4:
-			print("treds")
-			legtype = legset.treds
-		if temphold ==4 or temphold > 4:
-			temphold = 1
-		temphold += 1
-		print(temphold)
-		bodypartphys()
+	if event.is_action_pressed("switchLegs1"):# increments leg counter, legsets[legnum] will be your legs
+		legnum += 1
+		if legnum == len(legsets):
+			legnum = 0
 
 func _ready():# makes mouse captured
 	$"../Pause_menu".Play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	bodypartphys()
+	
 func _unhandled_input(event):# moves camara
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		body.rotate_y(-event.relative.x * sensetivity)
@@ -54,22 +30,22 @@ func _unhandled_input(event):# moves camara
 
 func _physics_process(delta):
 	if !is_on_floor():# captures latest velocity before hitting the ground
-		velocityybefore = velocity.y
-	move_and_slide()
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocityybefore = velocity.y # stupid fucking variable deserves to die
+	move_and_slide() # WHAT DOES THIS DO?
+	
+	if not is_on_floor(): #adds the current legs gravity vector to the velocity vector
+		velocity += legsets[legnum].gravity
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and legtype != legset.treds:
-		velocity.y = legjump * 1.8
-		velocity.x = 0
-		velocity.z = 0
+	# Handles any abilities including jumping.
+	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("abilitylegs") or Input.is_action_just_pressed("abilitylegs2"):
+		velocity += legsets[legnum].ability()
 		
+# stupid poopy leg based ability code
+	'''
 	if Input.is_action_just_pressed("abilitylegs") and is_on_floor():
 		$"../legabilitytimer_one".start()
 		
-	if legtype == legset.legs:# leg abilitys
+	if legnum == 2:# leg abilitys
 		if $"../legabilitytimer_one".time_left != 0 and Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			var input_dir2 = Input.get_vector("left", "right", "backword", "forword")
 			var direction2 = (body.transform.basis * Vector3(input_dir2.x, 0, input_dir2.y)).normalized()
@@ -96,7 +72,7 @@ func _physics_process(delta):
 					velocity.y = JUMP_VELOCITY * 1.5 * (2 - $"../legabilitytimer_one2".time_left)
 			
 			
-	if legtype == legset.roller:# roller abilitys
+	if legnum == 1:# roller abilitys
 		if is_on_floor() and floortemp == true:
 			$"../last_tuched_floor".start()
 			floortemp = false
@@ -125,8 +101,9 @@ func _physics_process(delta):
 				if !Input.is_action_pressed("abilitylegs"):
 					print("Kaboom")
 			
-	if legtype == legset.treds:# tred abiliteis
+	if legnum == 0:# tred abiliteis
 		pass
+'''
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "backword", "forword")

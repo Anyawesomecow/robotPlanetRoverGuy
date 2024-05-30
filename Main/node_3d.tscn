@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dv3lmju3tfivj"]
+[gd_scene load_steps=19 format=3 uid="uid://dv3lmju3tfivj"]
 
 [ext_resource type="Script" path="res://node_3d.gd" id="1_bvjba"]
 [ext_resource type="PackedScene" uid="uid://bvhah0u8jnvwb" path="res://player/heads/head one.glb" id="1_gfoto"]
 [ext_resource type="Script" path="res://CharacterBodytest.gd" id="1_yopsi"]
-[ext_resource type="Script" path="res://player/legsa/Movement_treads.gd" id="3_g5jwa"]
+[ext_resource type="Script" path="res://player/legsa/tread_legs.gd" id="3_g5jwa"]
 [ext_resource type="Script" path="res://UIs/menues/Pause_menu.gd" id="5_1jq4f"]
+[ext_resource type="Script" path="res://player/legsa/sphear_legs.gd" id="5_7ahqq"]
+[ext_resource type="Script" path="res://player/legsa/leg_legs.gd" id="6_khfbp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13i33"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,13 +87,15 @@ transform = Transform3D(-0.999926, 0, -0.0121473, 0, 1, 0, 0.0121473, 0, -0.9999
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CharacterBody3D/head one/Camera3D"]
 update_mode = 1
 
-[node name="Movement_treads" type="Node3D" parent="CharacterBody3D"]
+[node name="tread_legs" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.726653, 0.00309908)
 script = ExtResource("3_g5jwa")
 
 [node name="sphear_legs" type="Node3D" parent="CharacterBody3D"]
+script = ExtResource("5_7ahqq")
 
 [node name="leg_legs" type="Node3D" parent="CharacterBody3D"]
+script = ExtResource("6_khfbp")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8913, 1.51281, -37.9787)
@@ -129,22 +133,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61846, 4.73955, -15.3225)
 material_override = SubResource("StandardMaterial3D_46qvt")
 use_collision = true
 size = Vector3(9.11047, 7.78528, 1)
-
-[node name="legabilitytimer_one" type="Timer" parent="."]
-wait_time = 0.065
-one_shot = true
-
-[node name="legabilitytimer_one2" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="legabilitytimer_one3" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="last_tuched_floor" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(5.52591, -17.6193, 0, 6.28913, 15.4811, 0, 0, 0, 5.45922, -21.4927, 0, 0)
@@ -212,7 +200,6 @@ text = "Options"
 layout_mode = 2
 text = "Main Menue"
 
-[connection signal="timeout" from="legabilitytimer_one" to="CharacterBody3D" method="_on_legabilitytimer_timeout"]
 [connection signal="pressed" from="Pause_menu/PanelContainer/MarginContainer/VBoxContainer/play" to="Pause_menu" method="_on_play_pressed"]
 [connection signal="pressed" from="Pause_menu/PanelContainer/MarginContainer/VBoxContainer/options" to="Pause_menu" method="_on_options_pressed"]
 [connection signal="pressed" from="Pause_menu/PanelContainer/MarginContainer/VBoxContainer/main_menue" to="Pause_menu" method="_on_main_menue_pressed"]
